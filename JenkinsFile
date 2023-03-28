@@ -1,0 +1,29 @@
+pipeline {
+
+ agent any
+
+
+ stages {
+
+  stage('Clone') {
+     steps {
+       git branch: 'main' 
+       url:' https://github.com/GulzatCh/jenkins.git'
+   }
+  }
+  stage('Build') {
+     steps {
+        sh '''
+        docker build -t my awesomecat:${BUILD_NUMBER}
+        '''
+     }
+  }
+  stage('Deploy') {
+    steps {
+        sh 'echo "it was done through jenkins"'
+        
+    }
+  }
+ } 
+
+}
