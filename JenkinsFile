@@ -19,6 +19,11 @@ pipeline{
 	}
      }
   }
+                 }
+                         }
+                 }
+        }
+}
                  stage('Build') {
                           steps {
                                  sh 'docker build -t gulzatch/awesome_cats_frontend:v1 awesome_cats_frontend'
@@ -29,7 +34,7 @@ pipeline{
                            steps {
                                  sh 'docker push gulzatch/jenkins:myawesomecat_frontend'
 	   
-        
+                           }   
     }
     }
   
