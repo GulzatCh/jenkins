@@ -2,12 +2,12 @@ pipeline {
 
  agent any
 
-
- stages {
+stages {
 
   stage('Clone') {
      steps {
-       branch: 'master' 
+     scripts {
+       branch: 'main' 
        git url: 'https://github.com/GulzatCh/jenkins.git'
    }
   }
@@ -22,6 +22,7 @@ pipeline {
     steps {
         sh 'echo "it was done through jenkins"'
         
+    }
     }
   }
  } 
