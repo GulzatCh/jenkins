@@ -4,12 +4,22 @@ pipeline {
 
 stages {
 
- stage('Build') {
+ stage('Build image') {
      steps {
         sh '''
-        docker build -t myawesomecat:${BUILD_NUMBER} -f /awesomecat_backend/Dockerfile
-        docker push 
+        docker build -t myawesomecat:${BUILD_NUMBER} -f /awesome_cats_backend/Dockerfile
         '''
+ stage('Login') {
+      steps {
+        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+      }
+    }
+    stage('Push') {
+      steps {
+        sh 'docker push lloydmatereke/jenkins-docker-hub'
+        
+      }
+      }
      }
   }
   stage('Deploy') {
