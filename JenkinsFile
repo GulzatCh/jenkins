@@ -4,27 +4,33 @@ pipeline {
 
 stages {
 
- stage('Build image') {
-     steps {
-        sh '''
-        docker build -t myawesomecat:${BUILD_NUMBER} -f /awesome_cats_backend/Dockerfile
-        '''
- stage('Login') {
-      steps {
-        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-      }
-    }
-    stage('Push') {
-      steps {
-        sh 'docker push lloydmatereke/jenkins-docker-hub'
+      stage('Build image') {
+            steps {
+            sh '''
+            docker build -t gulzatch/awesome_cats_backend:v1 awesome_cats_backend
+            '''
+      stage('Login') {
+           steps {
+				       sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+      stage('Push image') {
+           steps {
+           sh 'docker push gulzatch/jenkins:myawesomecat_backend
         
       }
       }
      }
   }
-  stage('Deploy') {
-    steps {
-        sh 'echo "it was done through jenkins"'
+     stage('Build image') {
+            steps {
+            sh '''
+            docker build -t gulzatch/awesome_cats_frontend:v1 awesome_cats_frontend
+            '''
+     stage('Login') {
+           steps {
+				       sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+     stage('Push image') {
+           steps {
+           sh 'docker push gulzatch/jenkins:myawesomecat_frontend
         
     }
     }
