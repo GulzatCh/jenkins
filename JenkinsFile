@@ -7,7 +7,8 @@ stages {
  stage('Build') {
      steps {
         sh '''
-        docker build -t myawesomecat:${BUILD_NUMBER} -f /
+        docker build -t myawesomecat:${BUILD_NUMBER} -f /awesomecat_backend/Dockerfile
+        docker push 
         '''
      }
   }
