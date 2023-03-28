@@ -15,6 +15,7 @@ stages {
       stage('Push image') {
            steps {
            sh 'docker push gulzatch/jenkins:myawesomecat_backend
+	   '''
         
       }
       }
@@ -31,6 +32,7 @@ stages {
      stage('Push image') {
            steps {
            sh 'docker push gulzatch/jenkins:myawesomecat_frontend
+	   '''
         
     }
     }
