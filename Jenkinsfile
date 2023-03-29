@@ -14,7 +14,8 @@ pipeline {
 			 }
 			 
                  }
-        }
+        
+
 
                 stage('Login') {
                         steps {
@@ -28,3 +29,4 @@ pipeline {
                             } 
 				    }
 				    }
+}
