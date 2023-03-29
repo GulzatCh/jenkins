@@ -9,8 +9,8 @@ pipeline {
 
                 stage('Build') {
                         steps {
-                                sh 'docker build -t gulzatch/awesome_cats_backend:v1 ./awesome_cats_backend'
-                                sh 'docker build -t gulzatch/awesome_cats_frontend:v1 ./awesome_cats_frontend'
+                                sh 'cd awesome_cats_backend/ && docker build -t gulzatch/awesome_cats_backend:v1 -f Dockerfile .'
+                                sh 'cd awesome_cats_frontend/ && docker build -t gulzatch/awesome_cats_frontend:v1 -f Dockerfile .'
 			 }
 			 
                  }
